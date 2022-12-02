@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Character Limit</title>
+</head>
+
+<body>
+    <div class="input-box">
+        <textarea placeholder="Mesajını Yaz" required></textarea>
+        <span class="title">Mesajınız</span>
+        <div class="characters">
+            <span class="signal_num">0</span>
+            <span class="limit_num">/100</span>
+        </div>
+    </div>
+
+    <script>
+        let inputBox = document.querySelector(".input-box"),
+            textarea = inputBox.querySelector("textarea"),
+            signalNum = inputBox.querySelector(".signal_num");
+
+        textarea.addEventListener("keyup", () => {
+            let valLength = textarea.value.length;
+            signalNum.innerText = valLength;
+            (valLength > 0) ? inputBox.classList.add("active"): inputBox.classList.remove("active");
+            (valLength > 100) ? inputBox.classList.add("error"): inputBox.classList.remove("error");
+            console.log(valLength);
+        });
+    </script>
+</body>
+
+</html>
